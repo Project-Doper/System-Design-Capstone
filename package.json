@@ -1,0 +1,27 @@
+{
+  "name": "czwong-sdc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Project-Doper/czwong-SDC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Project-Doper/czwong-SDC/issues"
+  },
+  "homepage": "https://github.com/Project-Doper/czwong-SDC#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
