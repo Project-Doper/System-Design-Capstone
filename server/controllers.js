@@ -3,14 +3,20 @@ const db = require("./db.js");
 module.exports = {
   products: {
     getProducts: (req, res) => {
-      const count = !req.query.count ? 5 : req.query.count;
-      db.pool.query(`SELECT * FROM product limit(${count})`, (err, data) => {
-        if (err) {
-          res.status(404).send(err);
-        } else {
-          res.status(200).send(data.rows);
+      const count = !req.query.count ? 5 : Number(req.query.count);
+      const page = !req.query.count ? 1 : Number(req.query.page);
+      const start = page * count - (count - 1);
+      const end = start + count - 1;
+      db.pool.query(
+        `SELECT * FROM product WHERE id >= ${start} AND id <= ${end} ORDER BY id ASC`,
+        (err, data) => {
+          if (err) {
+            res.status(404).send(err);
+          } else {
+            res.status(200).send(data.rows);
+          }
         }
-      });
+      );
     },
     getProductInfo: (req, res) => {
       const id = req.params.id;
